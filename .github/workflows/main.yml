@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latests
+    name: Testing my action
+    steps:
+      - name: Test step
+        id: test
+        uses: actions/compile-typst-action@v0.0.0
+        with:
+          source-files: main.typ
