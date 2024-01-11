@@ -1,4 +1,4 @@
-FROM node:20
+FROM node:20.0.0
 # FROM ghcr.io/typst/typst:latest
 
 COPY ./index.js ./
@@ -8,4 +8,4 @@ RUN npm install
 COPY . . 
 
 FROM ghcr.io/typst/typst:latest 
-ENTRYPOINT [ "node", "./index.js" ]
+CMD [ "node", "./index.js" ]
