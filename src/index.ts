@@ -30,7 +30,7 @@ const parseInputs = (env: NodeJS.ProcessEnv) => {
 try {
   console.log("Hello world!");
   console.log(process.env);
-  console.log(fs.readdirSync(path.join(__dirname, "../github")));
+  console.log(fs.readdirSync(path.join(__dirname, "../github/workspace")));
 } catch (error) {
   core.setFailed(`Action failed with error: ${error}`);
 }
