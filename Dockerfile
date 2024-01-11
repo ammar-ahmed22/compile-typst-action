@@ -10,8 +10,9 @@ RUN npm install
 RUN npm install -g typescript
 RUN ls
 RUN npm run build
-# RUN ls
-# COPY /dist/index.js /index.js
+RUN ls
+COPY /dist/index.js /index.js
+RUN ls
 
 # RUN ["chmod", "+x", "index.js"]
 # # FROM ghcr.io/typst/typst:latest
