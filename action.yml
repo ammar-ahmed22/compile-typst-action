@@ -1,7 +1,7 @@
 name: "Typst Compiler"
 description: "Compiles Typst code into PDF"
 inputs:
-  source-files:
+  source_files:
     description: "Paths to source file"
     required: true
   output:
@@ -11,5 +11,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.source-files }}
+    - ${{ inputs.source_files }}
     - ${{ inputs.output }}

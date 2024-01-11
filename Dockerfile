@@ -3,10 +3,11 @@ FROM node:lts
 
 
 COPY package*.json ./
+COPY tsconfig.json ./ 
 
 RUN npm ci
-
-COPY index.js /index.js
+RUN npm run build
+COPY dist/index.js /index.js
 
 RUN ["chmod", "+x", "index.js"]
 # FROM ghcr.io/typst/typst:latest
