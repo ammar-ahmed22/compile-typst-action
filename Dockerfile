@@ -1,11 +1,14 @@
-FROM node:20
+FROM node:lts
 # FROM ghcr.io/typst/typst:latest
 
-COPY ./index.js ./
-COPY ./package*.json ./
 
-RUN npm install  
+COPY package*.json ./
 
-RUN ls
-# FROM ghcr.io/typst/typst:latest 
-ENTRYPOINT [ "node", "index.js" ]
+RUN npm ci
+
+COPY index.js /inde.js
+
+RUN ["chmod", "+x", "index.js"]
+# FROM ghcr.io/typst/typst:latest
+RUN ls 
+ENTRYPOINT [ "node", "/index.js" ]
