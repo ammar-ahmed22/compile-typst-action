@@ -9,4 +9,4 @@ COPY . .
 
 RUN ls
 # FROM ghcr.io/typst/typst:latest 
-ENTRYPOINT [ "node", "./index.js" ]
+ENTRYPOINT [ "node", "/root/index.js" ]
