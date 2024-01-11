@@ -7,9 +7,10 @@ COPY tsconfig.json ./
 
 RUN npm ci
 RUN npm run build
-COPY /dist/index.js /index.js
+RUN ls
+# COPY /dist/index.js /index.js
 
-RUN ["chmod", "+x", "index.js"]
-# FROM ghcr.io/typst/typst:latest
-RUN ls 
-ENTRYPOINT [ "node", "/index.js" ]
+# RUN ["chmod", "+x", "index.js"]
+# # FROM ghcr.io/typst/typst:latest
+# RUN ls 
+# ENTRYPOINT [ "node", "/index.js" ]
