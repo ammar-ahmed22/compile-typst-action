@@ -11,5 +11,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - 'SOURCE=${{ inputs.source-files }}'
-    - 'OUTPUT=${{ inputs.output }}'
+    - ${{ inputs.source-files }}
+    - ${{ inputs.output }}
