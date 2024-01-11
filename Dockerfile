@@ -4,10 +4,11 @@ FROM node:lts
 
 COPY package*.json ./
 COPY tsconfig.json ./ 
+COPY src ./src 
 
 RUN npm ci
 RUN ls
-# RUN npm run build
+RUN npm run build
 # RUN ls
 # COPY /dist/index.js /index.js
 
