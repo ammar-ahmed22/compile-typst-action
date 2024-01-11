@@ -6,7 +6,7 @@ COPY package*.json ./
 
 RUN npm ci
 
-COPY index.js /inde.js
+COPY index.js /index.js
 
 RUN ["chmod", "+x", "index.js"]
 # FROM ghcr.io/typst/typst:latest
