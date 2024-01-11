@@ -7,7 +7,7 @@ COPY tsconfig.json ./
 
 RUN npm ci
 RUN npm run build
-RUN ls
+COPY . .
 COPY dist/index.js /index.js
 
 RUN ["chmod", "+x", "index.js"]
