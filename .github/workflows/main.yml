@@ -7,6 +7,6 @@ jobs:
     steps:
       - name: Test step
         id: test
-        uses: actions/compile-typst-action@v0.0.0
+        uses: ammar-ahmed22/compile-typst-action@v0.0.0
         with:
           source-files: main.typ
