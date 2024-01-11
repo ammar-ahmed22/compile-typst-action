@@ -4,8 +4,9 @@ FROM node:20.0.0
 COPY ./index.js ./
 COPY ./package*.json ./
 
-RUN npm install 
-COPY . . 
-CMD ["node", "./index.js"]
+RUN ls
+# RUN npm install 
+# COPY . . 
+# CMD ["node", "./index.js"]
 # FROM ghcr.io/typst/typst:latest 
 # CMD [ "node", "./index.js" ]
