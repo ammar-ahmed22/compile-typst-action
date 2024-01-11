@@ -7,6 +7,7 @@ COPY tsconfig.json ./
 COPY src ./src 
 
 RUN npm install
+RUN npm install -g typescript
 RUN ls
 RUN npm run build
 # RUN ls
