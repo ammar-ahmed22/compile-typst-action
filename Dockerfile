@@ -6,6 +6,6 @@ COPY ./package*.json ./
 
 RUN npm install 
 COPY . . 
-
-FROM ghcr.io/typst/typst:latest 
-CMD [ "node", "./index.js" ]
+CMD ["node", "./index.js"]
+# FROM ghcr.io/typst/typst:latest 
+# CMD [ "node", "./index.js" ]
