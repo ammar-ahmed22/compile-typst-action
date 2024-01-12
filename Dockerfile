@@ -14,10 +14,11 @@ RUN npm run build
 # COPY /dist/index.js /index.js
 # RUN ls
 
-RUN ["chmod", "+x", "dist/index.js"]
+
 
 FROM ghcr.io/typst/typst:latest
 COPY --from=builder . .
+RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
 ENTRYPOINT [ "node", "/dist/index.js" ]
