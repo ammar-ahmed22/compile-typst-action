@@ -19,7 +19,7 @@ RUN npm install
 RUN npm install -g typescript
 
 RUN npm run build
-
+COPY . .
 RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
