@@ -11,7 +11,7 @@ COPY package*.json ./
 COPY tsconfig.json ./ 
 COPY src ./src 
 
-RUN node -v
+
 
 # # Installing Nodejs
 # RUN sudo apt-get update 
@@ -21,13 +21,13 @@ RUN node -v
 
 # RUN apk add typst
 
-# # Compiling typescript
-# RUN npm install
-# RUN npm install -g typescript
+# Compiling typescript
+RUN npm install
+RUN npm install -g typescript
 
-# RUN npm run build
+RUN npm run build
 
-# RUN ["chmod", "+x", "dist/index.js"]
+RUN ["chmod", "+x", "dist/index.js"]
 # RUN ls 
 # RUN cd dist && ls
-# ENTRYPOINT [ "node", "/dist/index.js" ]
+ENTRYPOINT [ "node", "/dist/index.js" ]
