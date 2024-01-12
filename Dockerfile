@@ -1,5 +1,5 @@
 
-FROM node:14 as node
+FROM node:14-alpine as node
 # Typst Docker Image
 FROM ghcr.io/typst/typst:latest
 
@@ -21,6 +21,6 @@ RUN npm install -g typescript
 RUN npm run build
 
 RUN ["chmod", "+x", "dist/index.js"]
-# RUN ls 
-# RUN cd dist && ls
+RUN ls 
+RUN cd dist && ls
 ENTRYPOINT [ "node", "/dist/index.js" ]
