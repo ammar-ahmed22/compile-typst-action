@@ -24,6 +24,6 @@ RUN npm run build
 # RUN mkdir repo
 # COPY . /root/repo
 
-# ENTRYPOINT [ "node", "/root/dist/index.js" ]
-COPY /root/dist/index.js index.js
-ENTRYPOINT ["node", "index.js"]
+ENTRYPOINT [ "node", "/root/dist/index.js" ]
+# COPY /root/dist/index.js index.js
+# ENTRYPOINT ["node", "index.js"]

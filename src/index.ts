@@ -48,8 +48,9 @@ import { exec, execSync } from "child_process";
 (() => {
   try {
     console.log("Hello world!");
-    const PATH = path.join(__dirname, "../repo")
+    // const PATH = path.join(__dirname, "../repo")
     core.info("Testing if core works")
+    core.info(fs.readdirSync(path.join(__dirname, "../")).toString());
     // const file1 = path.join(PATH, "./testing/file1.typ")
     // const output = path.join(PATH, "output.pdf")
     // try {
