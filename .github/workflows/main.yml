@@ -1,8 +1,8 @@
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
 
 jobs:
   test:
@@ -15,6 +15,6 @@ jobs:
         id: test
         uses: ammar-ahmed22/compile-typst-action@main
         with:
-          source_files: testing/file1.typ testing/file2.typ
-          output: AmmarAhmedResume
+          source_paths: testing/file1.typ testing/file2.typ
+          output_paths: AmmarAhmedResume
           token: ${{ secrets.GITHUB_TOKEN }}

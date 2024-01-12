@@ -46,7 +46,7 @@ import { execSync } from "child_process";
 //   return [sourcePaths, outputPaths]
 // }
 
-(() => {
+(async () => {
   try {
     // console.log("Hello world!");
     const PATH = path.join(__dirname, "../../github/workspace");
@@ -55,18 +55,26 @@ import { execSync } from "child_process";
     const sourcePaths = core.getInput("source_paths");
     const outputPaths = core.getInput("output_paths", { required: false });
 
-    console.log({ token });
-    // const file1 = path.join(PATH, "./testing/file1.typ")
-    // const output = path.join(PATH, "output.pdf")
-    // try {
-    //   console.log("TYPST COMPILE RUN");
-    //   execSync(`typst compile ${file1} ${output}`)
-    //   console.log("TYPST COMPILE COMPLETE");
-    //   console.log(fs.readdirSync(PATH));
+    const { context } = github;
+    const octokit = github.getOctokit(token);
+
+    
+    const file1 = path.join(PATH, "./testing/file1.typ")
+    const output = path.join(PATH, "output.pdf")
+    try {
+      console.log("TYPST COMPILE RUN");
+      execSync(`typst compile ${file1} ${output}`)
+      console.log("TYPST COMPILE COMPLETE");
+      console.log(fs.readdirSync(PATH));
       
-    // } catch (error) {
-    //   console.log("ERROR:", error);
-    // }
+    } catch (error) {
+      console.log("ERROR:", error);
+    }
+
+    await exec.exec("git", ['add', output])
+    await exec.exec("git", ["commit", "-m", "Generated PDF with Typst"])
+    await exec.exec("git", ['push']);
+    
   } catch (error) {
     console.log("ERROR:", error);
     // core.setFailed(`Action failed with error: ${error}`);
