@@ -51,6 +51,7 @@ const parseInputs = (env: NodeJS.ProcessEnv): [string[], string[]] | undefined =
   try {
     console.log("Hello world!");
     console.log(process.env);
+    throw new Error("Test error!")
     // const parsed = parseInputs(process.env);
     // if (!parsed) return;
     // const [sourcePaths, outputPaths] = parsed;
