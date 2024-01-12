@@ -1,6 +1,6 @@
 import fs from "fs";
 import path from "path";
-import core from "@actions/core"
+import * as core from "@actions/core"
 import github from "@actions/github"
 import { exec, execSync } from "child_process";
 
