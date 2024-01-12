@@ -17,3 +17,4 @@ jobs:
         with:
           source_files: testing/file1.typ testing/file2.typ
           output: AmmarAhmedResume
+          token: ${{ secrets.GITHUB_TOKEN }}

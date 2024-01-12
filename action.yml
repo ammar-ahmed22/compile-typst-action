@@ -1,15 +1,18 @@
 name: "Typst Compiler"
 description: "Compiles Typst code into PDF and commits them"
 inputs:
-  source_files:
-    description: "Paths to source file"
+  source_paths:
+    description: "Paths to source files"
     required: true
-  output:
-    description: "Name of the output PDF (defaults to the same as the source file)"
+  output_paths:
+    description: "Path of the output PDF's (without .pdf) (defaults to the same as the source file)"
     required: false
+  token:
+    description: "GitHub token"
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.source_files }}
-    - ${{ inputs.output }}
+    - ${{ inputs.source_paths }}
+    - ${{ inputs.output_paths }}
