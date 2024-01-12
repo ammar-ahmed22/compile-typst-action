@@ -1,5 +1,5 @@
 name: "Typst Compiler"
-description: "Compiles Typst code into PDF"
+description: "Compiles Typst code into PDF and commits them"
 inputs:
   source_files:
     description: "Paths to source file"

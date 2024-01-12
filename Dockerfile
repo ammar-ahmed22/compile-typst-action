@@ -20,12 +20,10 @@ RUN npm install -g typescript
 
 RUN npm run build
 
-RUN mkdir repo
-COPY . /root/repo
-# COPY node_modules /root/node_modules  
-# COPY dist /root/dist
+# # This Works!!
+# RUN mkdir repo
+# COPY . /root/repo
 
-# RUN ["chmod", "+x", "/root/dist/index.js"]
-# RUN ls 
-# RUN cd dist && ls
-ENTRYPOINT [ "node", "/root/dist/index.js" ]
+# ENTRYPOINT [ "node", "/root/dist/index.js" ]
+COPY /root/dist/index.js index.js
+ENTRYPOINT ["node", "index.js"]
