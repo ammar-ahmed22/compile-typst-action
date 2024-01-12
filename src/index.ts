@@ -54,7 +54,9 @@ const REPO_PATH = path.join(__dirname, "../github/workspace");
     const file1 = path.join(PATH, "./testing/file1.typ")
     const output = path.join(PATH, "output.pdf")
     try {
+      console.log("TYPST COMPILE RUN");
       execSync(`typst compile ${file1} ${output}`)
+      console.log("TYPST COMPILE COMPLETE");
       fs.readdirSync(PATH);
     } catch (error) {
       console.log("ERROR:", error);
