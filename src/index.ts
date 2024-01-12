@@ -57,7 +57,7 @@ const REPO_PATH = path.join(__dirname, "../github/workspace");
       execSync(`typst compile ${file1} ${output}`)
       fs.readdirSync(PATH);
     } catch (error) {
-      
+      console.log("ERROR:", error);
     }
     // throw new Error("Test error!")
     // const parsed = parseInputs(process.env);
