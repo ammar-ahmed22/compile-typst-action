@@ -1,6 +1,6 @@
 # Typst Docker Image
 # FROM ghcr.io/typst/typst:latest
-FROM node:14
+FROM node:14-alpine
 
 # Copying necessary files
 COPY package*.json ./
