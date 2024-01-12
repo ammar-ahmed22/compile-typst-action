@@ -1,6 +1,4 @@
 FROM node:14 as builder
-# FROM ghcr.io/typst/typst:latest
-
 
 COPY package*.json ./
 COPY tsconfig.json ./ 
@@ -8,16 +6,12 @@ COPY src ./src
 
 RUN npm install
 RUN npm install -g typescript
-# RUN ls
+
 RUN npm run build
-# RUN cd dist && ls
-# COPY /dist/index.js /index.js
-# RUN ls
-
-
 
 FROM ghcr.io/typst/typst:latest
 COPY --from=builder . .
+RUN apk add --update nodejs=14
 RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
