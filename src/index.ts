@@ -1,8 +1,8 @@
 import fs from "fs";
 import path from "path";
+import core from "@actions/core"
+import github from "@actions/github"
 import { exec, execSync } from "child_process";
-
-const REPO_PATH = path.join(__dirname, "../github/workspace");
 
 // const parseInputs = (env: NodeJS.ProcessEnv): [string[], string[]] | undefined => {
 //   const sourceFiles = env.INPUT_SOURCE_FILES;
@@ -48,32 +48,18 @@ const REPO_PATH = path.join(__dirname, "../github/workspace");
 (() => {
   try {
     console.log("Hello world!");
-    // console.log(process.env);
     const PATH = path.join(__dirname, "../repo")
-    // console.log(fs.readdirSync(path.join(__dirname, "../repo")));
-    const file1 = path.join(PATH, "./testing/file1.typ")
-    const output = path.join(PATH, "output.pdf")
-    try {
-      console.log("TYPST COMPILE RUN");
-      execSync(`typst compile ${file1} ${output}`)
-      console.log("TYPST COMPILE COMPLETE");
-      console.log(fs.readdirSync(PATH));
-    } catch (error) {
-      console.log("ERROR:", error);
-    }
-    // throw new Error("Test error!")
-    // const parsed = parseInputs(process.env);
-    // if (!parsed) return;
-    // const [sourcePaths, outputPaths] = parsed;
-    // for (let i = 0; i < sourcePaths.length; i++) {
-    //   const sp = sourcePaths[i];
-    //   const op = outputPaths[i];
-    //   try {
-    //     const stdout = execSync(`typst compile ${sp} ${op}`)
-    //     console.log(`stdout: ${stdout}`);
-    //   } catch (error) {
-    //     core.setFailed(`Typst failed with: ${error}`);
-    //   }
+    core.debug("Testing if core works")
+    // const file1 = path.join(PATH, "./testing/file1.typ")
+    // const output = path.join(PATH, "output.pdf")
+    // try {
+    //   console.log("TYPST COMPILE RUN");
+    //   execSync(`typst compile ${file1} ${output}`)
+    //   console.log("TYPST COMPILE COMPLETE");
+    //   console.log(fs.readdirSync(PATH));
+      
+    // } catch (error) {
+    //   console.log("ERROR:", error);
     // }
   } catch (error) {
     console.log("ERROR:", error);
