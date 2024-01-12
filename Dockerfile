@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:14 as builder
 # FROM ghcr.io/typst/typst:latest
 
 
@@ -17,5 +17,6 @@ RUN cd dist && ls
 RUN ["chmod", "+x", "dist/index.js"]
 
 FROM ghcr.io/typst/typst:latest
+COPY --from=builder . .
 # RUN ls 
 ENTRYPOINT [ "node", "/dist/index.js" ]
