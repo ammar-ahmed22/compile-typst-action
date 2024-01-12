@@ -10,10 +10,11 @@ COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 # Copying necessary files
-COPY . /root/
-# COPY package*.json /root/
-# COPY tsconfig.json /root/
-# COPY src /root/src 
+RUN mkdir repo
+COPY . /root/repo
+COPY package*.json /root/
+COPY tsconfig.json /root/
+COPY src /root/src 
 
 # Compiling typescript
 RUN npm install
