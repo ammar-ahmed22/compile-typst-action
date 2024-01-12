@@ -23,4 +23,4 @@ RUN npm run build
 RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
-ENTRYPOINT [ "node", "dist/index.js" ]
+ENTRYPOINT [ "node", "/root/dist/index.js" ]
