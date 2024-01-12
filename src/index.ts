@@ -51,7 +51,7 @@ const parseInputs = (env: NodeJS.ProcessEnv): [string[], string[]] | undefined =
   try {
     console.log("Hello world!");
     console.log(process.env);
-    console.log(fs.readdirSync(path.join(__dirname, "..")));
+    console.log(fs.readdirSync(path.join(__dirname, "../repo")));
     // throw new Error("Test error!")
     // const parsed = parseInputs(process.env);
     // if (!parsed) return;
