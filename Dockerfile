@@ -1,16 +1,19 @@
 # Typst Docker Image
-FROM ghcr.io/typst/typst:latest
+# FROM ghcr.io/typst/typst:latest
+FROM node:14
 
 # Copying necessary files
 COPY package*.json ./
 COPY tsconfig.json ./ 
 COPY src ./src 
 
-# Installing Nodejs
-RUN sudo apt-get update 
-RUN sudo apt-get -y install curl gnupg
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
-RUN sudo apt-get -y install nodejs 
+# # Installing Nodejs
+# RUN sudo apt-get update 
+# RUN sudo apt-get -y install curl gnupg
+# RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+# RUN sudo apt-get -y install nodejs 
+
+RUN apk add typst
 
 # Compiling typescript
 RUN npm install
