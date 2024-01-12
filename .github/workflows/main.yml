@@ -10,5 +10,5 @@ jobs:
         id: test
         uses: ammar-ahmed22/compile-typst-action@main
         with:
-          source_files: main.typ
+          source_files: testing/file1.typ testing/file2.typ
           output: AmmarAhmedResume

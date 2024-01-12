@@ -15,6 +15,7 @@ RUN cd dist && ls
 # RUN ls
 
 RUN ["chmod", "+x", "dist/index.js"]
-# # FROM ghcr.io/typst/typst:latest
+
+FROM ghcr.io/typst/typst:latest
 # RUN ls 
 ENTRYPOINT [ "node", "/dist/index.js" ]
