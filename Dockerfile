@@ -10,16 +10,16 @@ COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
 # Copying necessary files
-COPY package*.json ./
-COPY tsconfig.json ./ 
-COPY src ./src 
+COPY package*.json /
+COPY tsconfig.json / 
+COPY src /src 
 
 # Compiling typescript
 RUN npm install
 RUN npm install -g typescript
 
 RUN npm run build
-COPY . .
+
 RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
