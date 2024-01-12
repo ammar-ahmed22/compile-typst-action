@@ -11,7 +11,7 @@ RUN npm run build
 
 FROM ghcr.io/typst/typst:latest
 COPY --from=builder . .
-RUN apk add --update nodejs=14
+RUN apk add --update nodejs
 RUN ["chmod", "+x", "dist/index.js"]
 RUN ls 
 RUN cd dist && ls
