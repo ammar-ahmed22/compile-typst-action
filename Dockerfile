@@ -20,7 +20,10 @@ RUN npm install -g typescript
 
 RUN npm run build
 
-RUN ["chmod", "+x", "dist/index.js"]
-RUN ls 
-RUN cd dist && ls
+COPY node_modules /root/node_modules  
+COPY dist /root/dist
+
+# RUN ["chmod", "+x", "/root/dist/index.js"]
+# RUN ls 
+# RUN cd dist && ls
 ENTRYPOINT [ "node", "/root/dist/index.js" ]

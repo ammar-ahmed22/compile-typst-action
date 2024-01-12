@@ -51,19 +51,19 @@ const parseInputs = (env: NodeJS.ProcessEnv): [string[], string[]] | undefined =
   try {
     console.log("Hello world!");
     console.log(process.env);
-    const parsed = parseInputs(process.env);
-    if (!parsed) return;
-    const [sourcePaths, outputPaths] = parsed;
-    for (let i = 0; i < sourcePaths.length; i++) {
-      const sp = sourcePaths[i];
-      const op = outputPaths[i];
-      try {
-        const stdout = execSync(`typst compile ${sp} ${op}`)
-        console.log(`stdout: ${stdout}`);
-      } catch (error) {
-        core.setFailed(`Typst failed with: ${error}`);
-      }
-    }
+    // const parsed = parseInputs(process.env);
+    // if (!parsed) return;
+    // const [sourcePaths, outputPaths] = parsed;
+    // for (let i = 0; i < sourcePaths.length; i++) {
+    //   const sp = sourcePaths[i];
+    //   const op = outputPaths[i];
+    //   try {
+    //     const stdout = execSync(`typst compile ${sp} ${op}`)
+    //     console.log(`stdout: ${stdout}`);
+    //   } catch (error) {
+    //     core.setFailed(`Typst failed with: ${error}`);
+    //   }
+    // }
   } catch (error) {
     core.setFailed(`Action failed with error: ${error}`);
   }
