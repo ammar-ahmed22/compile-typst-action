@@ -67,7 +67,24 @@ const parseInputs = (): [string[], string[], string | undefined] => {
     
     const [source, outputs, fontsPath] = parseInputs();
 
-    console.log({ source, outputs, fontsPath });
+    for (let i = 0; i < source.length; i++) {
+      const src = source[i];
+      const out = outputs[i];
+      let cmd = "typst compile ";
+      if (fontsPath) {
+        cmd += `--font-path ${fontsPath} `
+      }
+      cmd += `${src} ${out}`
+      const res = execSync(cmd);
+      console.log(res.toString());
+    }
+    // Check if outputs were created
+    for (let out of outputs) {
+      if (!fs.existsSync(out)) core.setFailed("Some files were not created! Check logs.")
+    }
+    console.log("All files generated!");
+    console.log(fs.readdirSync(PATH));
+    // console.log({ source, outputs, fontsPath });
     
     // const file1 = path.join(PATH, "./testing/file1.typ")
     // const output = path.join(PATH, "output.pdf")
