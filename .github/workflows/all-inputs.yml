@@ -1,8 +1,5 @@
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
 permissions:
   contents: write
 name: Testing with All Valid Inputs
@@ -20,11 +17,6 @@ jobs:
           source_paths: testing/file1.typ testing/file2.typ
           output_paths: myfile1.pdf myfile2.pdf
           fonts_path: testing/fonts
-      # - name: Upload PDF
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: PDF
-      #     path: "**/*.pdf"
       - name: Release
         uses: softprops/action-gh-release@v1
         if: github.ref_type == 'tag'

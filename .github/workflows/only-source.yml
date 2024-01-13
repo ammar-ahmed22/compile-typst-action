@@ -1,8 +1,5 @@
 on: 
   workflow_dispatch:
-  push:
-    branches:
-      - main
 name: Testing with only Source Paths
 jobs:
   test:

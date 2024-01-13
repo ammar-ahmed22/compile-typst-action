@@ -1,8 +1,6 @@
 import fs from "fs";
 import path from "path";
 import * as core from "@actions/core"
-import * as exec from "@actions/exec"
-import * as github from "@actions/github"
 import { execSync } from "child_process";
 
 const PATH = path.join(__dirname, "../../github/workspace");
@@ -62,9 +60,6 @@ const parseInputs = (): [string[], string[], string | undefined] => {
 
 (async () => {
   try {
-
-    
-    
     const [source, outputs, fontsPath] = parseInputs();
 
     for (let i = 0; i < source.length; i++) {
@@ -83,24 +78,8 @@ const parseInputs = (): [string[], string[], string | undefined] => {
       if (!fs.existsSync(out)) core.setFailed("Some files were not created! Check logs.")
     }
     console.log("All files generated!");
-    console.log(fs.readdirSync(PATH));
-    // console.log({ source, outputs, fontsPath });
-    
-    // const file1 = path.join(PATH, "./testing/file1.typ")
-    // const output = path.join(PATH, "output.pdf")
-    // try {
-    //   console.log("TYPST COMPILE RUN");
-    //   execSync(`typst compile ${file1} ${output}`)
-    //   console.log("TYPST COMPILE COMPLETE");
-    //   console.log(fs.readdirSync(PATH));
-      
-    // } catch (error) {
-    //   console.log("ERROR:", error);
-    // }
-
 
   } catch (error) {
-    console.log("ERROR:", error);
-    // core.setFailed(`Action failed with error: ${error}`);
+   setFailed(error as Error)
   }
 })()
