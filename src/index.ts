@@ -26,13 +26,13 @@ const parseInputs = (): [string[], string[], string | undefined] => {
   // Check if source paths exist in the repo
   for (const p of srcPaths) {
     if (!fs.existsSync(path.join(PATH, p))) {
-      core.setFailed(`Provided source path: '${p}' does not exist in the repository!`)
+      setFailed(`Provided source path: '${p}' does not exist in the repository!`)
     }
   }
 
   if (outputPaths !== "") {
     if (srcPaths.length !== outPaths.length) {
-      core.setFailed(`Argument: 'output_paths' must have the same number of paths as Argument: 'source_paths'`)
+      setFailed(`Argument: 'output_paths' must have the same number of paths as Argument: 'source_paths'`)
     }
   } else {
     outPaths = srcPaths.map(p => {
@@ -49,7 +49,7 @@ const parseInputs = (): [string[], string[], string | undefined] => {
   if (fontsPath !== "") {
     // Check if fonts path exists
     if (!fs.existsSync(path.join(PATH, fontsPath))) {
-      core.setFailed(`Argument: 'fonts_path' does not exist in the repository!`)
+      setFailed(`Argument: 'fonts_path' does not exist in the repository!`)
     } else {
       fp = path.join(PATH, fontsPath);
     }
