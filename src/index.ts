@@ -5,8 +5,17 @@ import * as exec from "@actions/exec"
 import * as github from "@actions/github"
 import { execSync } from "child_process";
 
-const parseInputs = (sourcePaths: string, outputPaths: string, fontsPath: string) => {
-  console.log({ sourcePaths, outputPaths, fontsPath });
+const setFailed = (message: string | Error) => {
+  core.setFailed(message);
+  process.exit(0);
+}
+
+const parseInputs = () => {
+  const sourcePaths = core.getInput("source_paths");
+  const outputPaths = core.getInput("output_paths", { required: false });
+  const fontsPath = core.getInput("fonts_path", { required: false });
+
+  
 }
 
 
@@ -16,11 +25,7 @@ const parseInputs = (sourcePaths: string, outputPaths: string, fontsPath: string
 
     const PATH = path.join(__dirname, "../../github/workspace");
     
-    const sourcePaths = core.getInput("source_paths");
-    const outputPaths = core.getInput("output_paths", { required: false });
-    const fontsPaths = core.getInput("fonts_path", { required: false });
-    
-    parseInputs(sourcePaths, outputPaths, fontsPaths);
+    parseInputs();
     
     const file1 = path.join(PATH, "./testing/file1.typ")
     const output = path.join(PATH, "output.pdf")

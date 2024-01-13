@@ -7,16 +7,30 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    name: Testing my action
+    name: Testing Action
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Test steps
+      - name: Test with all inputs valid
         id: test
         uses: ammar-ahmed22/compile-typst-action@main
         with:
           source_paths: testing/file1.typ testing/file2.typ
           output_paths: myfile1.pdf myfile2.pdf
+          fonts_path: testing/fonts
+      - name: Test with only source_paths
+        uses: ammar-ahmed22/compile-typst-action@main
+        with:
+          source_paths: testing/file1.typ testing/file2.typ
+      - name: Test with mismatch output_paths
+        uses: ammar-ahmed22/compile-typst-action@main
+        with:
+          source_paths: testing/file1.typ testing/file2.typ
+          output_paths: myfile1.pdf
+      - name: Test with non-existent source
+        uses: ammar-ahmed22/compile-typst-action@main
+        with:
+          source_paths: testing/file.typ
       # - name: Upload PDF
       #   uses: actions/upload-artifact@v3
       #   with:
