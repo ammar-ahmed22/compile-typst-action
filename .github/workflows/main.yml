@@ -31,6 +31,10 @@ jobs:
         uses: ammar-ahmed22/compile-typst-action@main
         with:
           source_paths: testing/file.typ
+      - name: Test without source
+        uses: ammar-ahmed22/compile-typst-action@main
+        with:
+          output_paths: myfile2.pdf
       # - name: Upload PDF
       #   uses: actions/upload-artifact@v3
       #   with:
