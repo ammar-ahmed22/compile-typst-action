@@ -18,7 +18,7 @@ jobs:
           source_paths: testing/file1.typ testing/file2.typ
           output_paths: AmmarAhmedResume
       - name: Upload PDF
-        uses: actions/upload-artifact#v3
+        uses: actions/upload-artifact@v3
         with:
           name: PDF
           path: "**/*.pdf"

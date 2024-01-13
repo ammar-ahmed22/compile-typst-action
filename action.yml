@@ -16,3 +16,4 @@ runs:
   args:
     - ${{ inputs.source_paths }}
     - ${{ inputs.output_paths }}
+    - ${{ inputs.fonts_path }}
