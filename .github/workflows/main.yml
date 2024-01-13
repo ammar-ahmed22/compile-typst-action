@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-permissions: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
