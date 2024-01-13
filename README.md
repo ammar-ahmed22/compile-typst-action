@@ -13,6 +13,9 @@
 </p>
 
 ## ✨ Features
+- **Compile Typst Code**: Automatically compiles .typ files into PDFs.
+- **Customizable Paths**: Specify source and output paths for flexibility.
+- **Font Support**: Optional custom font configuration for Typst rendering.
 
 ## 📥 Inputs
 | Name            | Type       | Description                                                                                              | Required? |
