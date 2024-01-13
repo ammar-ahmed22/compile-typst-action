@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: write
 name: Testing with All Valid Inputs
 jobs:
   test:
