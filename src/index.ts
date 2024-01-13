@@ -12,7 +12,7 @@ const setFailed = (message: string | Error) => {
   process.exit(0);
 }
 
-const parseInputs = () => {
+const parseInputs = (): [string[], string[], string | undefined] => {
   let sourcePaths = core.getInput("source_paths");
   let outputPaths = core.getInput("output_paths", { required: false });
   let fontsPath = core.getInput("fonts_path", { required: false });
@@ -30,7 +30,32 @@ const parseInputs = () => {
     }
   }
 
-  
+  if (outputPaths !== "") {
+    if (srcPaths.length !== outPaths.length) {
+      core.setFailed(`Argument: 'output_paths' must have the same number of paths as Argument: 'source_paths'`)
+    }
+  } else {
+    outPaths = srcPaths.map(p => {
+      let temp = p.split(".");
+      temp[temp.length - 1] = "pdf";
+      return temp.join(".");
+    })
+  }
+
+  srcPaths = srcPaths.map(p => path.join(PATH, p));
+  outPaths = srcPaths.map(p => path.join(PATH, p));
+
+  let fp;
+  if (fontsPath !== "") {
+    // Check if fonts path exists
+    if (!fs.existsSync(path.join(PATH, fontsPath))) {
+      core.setFailed(`Argument: 'fonts_path' does not exist in the repository!`)
+    } else {
+      fp = path.join(PATH, fontsPath);
+    }
+  }
+
+  return [srcPaths, outPaths, fp];
 }
 
 
@@ -40,19 +65,21 @@ const parseInputs = () => {
 
     
     
-    parseInputs();
+    const [source, outputs, fontsPath] = parseInputs();
+
+    console.log({ source, outputs, fontsPath });
     
-    const file1 = path.join(PATH, "./testing/file1.typ")
-    const output = path.join(PATH, "output.pdf")
-    try {
-      console.log("TYPST COMPILE RUN");
-      execSync(`typst compile ${file1} ${output}`)
-      console.log("TYPST COMPILE COMPLETE");
-      console.log(fs.readdirSync(PATH));
+    // const file1 = path.join(PATH, "./testing/file1.typ")
+    // const output = path.join(PATH, "output.pdf")
+    // try {
+    //   console.log("TYPST COMPILE RUN");
+    //   execSync(`typst compile ${file1} ${output}`)
+    //   console.log("TYPST COMPILE COMPLETE");
+    //   console.log(fs.readdirSync(PATH));
       
-    } catch (error) {
-      console.log("ERROR:", error);
-    }
+    // } catch (error) {
+    //   console.log("ERROR:", error);
+    // }
 
 
   } catch (error) {
