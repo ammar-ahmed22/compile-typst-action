@@ -21,7 +21,7 @@ const parseInputs = (): [string[], string[], string | undefined] => {
     setFailed(`Argument: 'source_paths' is required!`)
   }
   let srcPaths = sourcePaths.trim().split(" ").map(s => s.trim());
-  let outPaths = sourcePaths.trim().split(" ").map(s => s.trim());
+  let outPaths = outputPaths.trim().split(" ").map(s => s.trim());
 
   // Check if source paths exist in the repo
   for (const p of srcPaths) {
