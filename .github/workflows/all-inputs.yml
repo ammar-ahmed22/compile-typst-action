@@ -23,8 +23,10 @@ jobs:
       #   with:
       #     name: PDF
       #     path: "**/*.pdf"
-      # - name: Release
-      #   uses: softprops/actions-gh-release@v1
-      #   with:
-      #     name: "${{ github.ref_name }}"
-      #     file: "output.pdf"
+      - name: Release
+        uses: softprops/actions-gh-release@v1
+        with:
+          name: "${{ github.ref_name }}"
+          file: |
+            myfile1.pdf
+            myfile2.pdf
