@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-
+name: Testing with No Source Paths
 jobs:
   test:
     runs-on: ubuntu-latest

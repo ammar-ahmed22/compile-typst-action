@@ -3,7 +3,7 @@ on:
   push:
     branches:
       - main
-
+name: Testing with All Valid Inputs
 jobs:
   test:
     runs-on: ubuntu-latest
