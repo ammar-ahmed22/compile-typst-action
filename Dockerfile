@@ -20,10 +20,4 @@ RUN npm install
 
 RUN npm run build
 
-# # This Works!!
-# RUN mkdir repo
-# COPY . /root/repo
-
 ENTRYPOINT [ "node", "/root/dist/index.js" ]
-# COPY /root/dist/index.js index.js
-# ENTRYPOINT ["node", "index.js"]

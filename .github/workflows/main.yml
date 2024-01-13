@@ -1,8 +1,8 @@
 on: 
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
 permissions: write
 jobs:
   test:
@@ -17,4 +17,13 @@ jobs:
         with:
           source_paths: testing/file1.typ testing/file2.typ
           output_paths: AmmarAhmedResume
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload PDF
+        uses: actions/upload-artifact#v3
+        with:
+          name: PDF
+          path: "**/*.pdf"
+      # - name: Release
+      #   uses: softprops/actions-gh-release@v1
+      #   with:
+      #     name: "${{ github.ref_name }}"
+      #     file: "/file.pdf"

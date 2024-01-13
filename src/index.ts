@@ -46,72 +46,17 @@ import { execSync } from "child_process";
 //   return [sourcePaths, outputPaths]
 // }
 
-const commitFile = async (token: string, owner: string, repo: string, path: string, message: string, branch: string, filePath: string) => {
-  const octokit = github.getOctokit(token);
-  const contentEncoded = fs.readFileSync(filePath).toString("base64");
-  const { data: refData } = await octokit.request('GET /repos/{owner}/{repo}/git/ref/heads/{branch}', {
-    owner,
-    repo,
-    branch
-});
-const commitSha = refData.object.sha;
 
-const { data: commitData } = await octokit.request('GET /repos/{owner}/{repo}/git/commits/{commit_sha}', {
-    owner,
-    repo,
-    commit_sha: commitSha
-});
-const treeSha = commitData.tree.sha;
-
-const { data: blobData } = await octokit.request('POST /repos/{owner}/{repo}/git/blobs', {
-    owner,
-    repo,
-    content: contentEncoded,
-    encoding: 'base64'
-});
-const blobSha = blobData.sha;
-
-const { data: treeData } = await octokit.request('POST /repos/{owner}/{repo}/git/trees', {
-    owner,
-    repo,
-    base_tree: treeSha,
-    tree: [{
-        path: path,
-        mode: '100644',
-        type: 'blob',
-        sha: blobSha
-    }]
-});
-const newTreeSha = treeData.sha;
-
-const { data: newCommitData } = await octokit.request('POST /repos/{owner}/{repo}/git/commits', {
-    owner,
-    repo,
-    message,
-    tree: newTreeSha,
-    parents: [commitSha]
-});
-const newCommitSha = newCommitData.sha;
-
-await octokit.request('PATCH /repos/{owner}/{repo}/git/refs/heads/{branch}', {
-    owner,
-    repo,
-    branch,
-    sha: newCommitSha
-});
-}
 
 (async () => {
   try {
     // console.log("Hello world!");
     const PATH = path.join(__dirname, "../../github/workspace");
     
-    const token = core.getInput("token")
     const sourcePaths = core.getInput("source_paths");
     const outputPaths = core.getInput("output_paths", { required: false });
 
-    const { context } = github;
-    const octokit = github.getOctokit(token);
+    
 
     
     const file1 = path.join(PATH, "./testing/file1.typ")
@@ -126,8 +71,6 @@ await octokit.request('PATCH /repos/{owner}/{repo}/git/refs/heads/{branch}', {
       console.log("ERROR:", error);
     }
 
-    await commitFile(token, "ammar-ahmed22", "compile-typst-action", "output.pdf", "Compiled PDF with Typst", "main", output);
-    
 
   } catch (error) {
     console.log("ERROR:", error);

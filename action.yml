@@ -7,9 +7,9 @@ inputs:
   output_paths:
     description: "Path of the output PDF's (without .pdf) (defaults to the same as the source file)"
     required: false
-  token:
-    description: "GitHub token"
-    required: true
+  fonts_path:
+    description: "Path to fonts directory for Typst"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
