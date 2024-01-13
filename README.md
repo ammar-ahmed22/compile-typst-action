@@ -21,8 +21,8 @@
 | `output_paths`  | `String[]` | Space separated list of output paths (must be `.pdf`) (defaults to the same name as the `source_paths`)  |           |
 | `fonts_paths`   | `String`   | Path to the fonts directory used by the Typst compiler                                                   |           |
 
-💡 When providing `output_paths`, the number of `output_paths` should match exactly the number of `source_paths`. Each source file will be compiled to the output file in the given order.
- 
+> 💡 When providing `output_paths`, the number of `output_paths` should match exactly the number of `source_paths`. Each source file will be compiled to the output file in the given order.
+
 ## 🤸 Usage
 
 To use this acton, create a workflow file (e.g. `.github/workflows/typst-compile.yml`) in your GitHub repository. 
