@@ -9,7 +9,7 @@ const PATH = path.join(__dirname, "../../github/workspace");
 
 const setFailed = (message: string | Error) => {
   core.setFailed(message);
-  process.exit(0);
+  process.exit(1);
 }
 
 const parseInputs = (): [string[], string[], string | undefined] => {
