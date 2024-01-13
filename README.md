@@ -15,7 +15,11 @@
 ## ✨ Features
 
 ## 📥 Inputs
-
+| Name            | Type     | Description                                                                                              | Required? |
+| --------------- | -------- | -------------------------------------------------------------------------------------------------------- | --------- |
+| `source_paths`  | String[] | Space separated list of paths to the `.typ` files                                                        | ✅        |
+| `output_paths`  | String[] | Space separated list of output paths (must be `.pdf`) (defaults to the same name as the `source_paths`)  |           |
+| `fonts_paths`   | String   | Path to the fonts directory used by the Typst compiler                                                   |           |
 ## 🤸 Usage
 
 To use this acton, create a workflow file (e.g. `.github/workflows/typst-compile.yml`) in your GitHub repository. 
@@ -39,3 +43,5 @@ Here's a more complex example which does the following:
 Contributions to the Typst Compiler GitHub Action are welcome! It is far from perfect, I threw  this together quickly to solve a personal problem. Please feel free to open a PR or issue with any changes!
 
 For more information on Typst, visit [Typst Documentation](https://typst.app/docs/).
+
+Amamr Ahmed (ammar-ahmed22) 2024
