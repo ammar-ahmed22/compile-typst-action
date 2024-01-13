@@ -1,11 +1,11 @@
 name: "Typst Compiler"
-description: "Compiles Typst code into PDF and commits them"
+description: "Compiles Typst files using the latest Typst version"
 inputs:
   source_paths:
-    description: "Paths to source files"
+    description: "Paths to source files. Space separated list of paths of .typ files."
     required: true
   output_paths:
-    description: "Path of the output PDF's (without .pdf) (defaults to the same as the source file)"
+    description: "Path of the output PDF's. Space separated list of paths of .pdf files. (defaults to the same as the source file)"
     required: false
   fonts_path:
     description: "Path to fonts directory for Typst"
