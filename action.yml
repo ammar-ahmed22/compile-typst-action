@@ -1,7 +1,9 @@
 name: "Typst Compiler"
 description: "A GitHub Action for compiling Typst files to PDF's using the latest Typst release."
-icon: 'file-plus'
-color: 'purple'
+author: "Ammar Ahmed"
+branding:
+  icon: 'file-plus'
+  color: 'purple'
 inputs:
   source_paths:
     description: "Space separated list of paths to the .typ files"
