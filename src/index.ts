@@ -5,15 +5,30 @@ import * as exec from "@actions/exec"
 import * as github from "@actions/github"
 import { execSync } from "child_process";
 
+const PATH = path.join(__dirname, "../../github/workspace");
+
 const setFailed = (message: string | Error) => {
   core.setFailed(message);
   process.exit(0);
 }
 
 const parseInputs = () => {
-  const sourcePaths = core.getInput("source_paths");
-  const outputPaths = core.getInput("output_paths", { required: false });
-  const fontsPath = core.getInput("fonts_path", { required: false });
+  let sourcePaths = core.getInput("source_paths");
+  let outputPaths = core.getInput("output_paths", { required: false });
+  let fontsPath = core.getInput("fonts_path", { required: false });
+
+  if (!sourcePaths) {
+    setFailed(`Argument: 'source_paths' is required!`)
+  }
+  let srcPaths = sourcePaths.trim().split(" ").map(s => s.trim());
+  let outPaths = sourcePaths.trim().split(" ").map(s => s.trim());
+
+  // Check if source paths exist in the repo
+  for (const p of srcPaths) {
+    if (!fs.existsSync(path.join(PATH, p))) {
+      core.setFailed(`Provided source path: '${p}' does not exist in the repository!`)
+    }
+  }
 
   
 }
@@ -23,7 +38,7 @@ const parseInputs = () => {
 (async () => {
   try {
 
-    const PATH = path.join(__dirname, "../../github/workspace");
+    
     
     parseInputs();
     
