@@ -16,7 +16,7 @@
 
 ## 📥 Inputs
 | Name            | Type     | Description                                                                                              | Required? |
-| --------------- | -------- | -------------------------------------------------------------------------------------------------------- | --------- |
+| --------------- | -------- | -------------------------------------------------------------------------------------------------------- | :-------: |
 | `source_paths`  | String[] | Space separated list of paths to the `.typ` files                                                        | ✅        |
 | `output_paths`  | String[] | Space separated list of output paths (must be `.pdf`) (defaults to the same name as the `source_paths`)  |           |
 | `fonts_paths`   | String   | Path to the fonts directory used by the Typst compiler                                                   |           |
