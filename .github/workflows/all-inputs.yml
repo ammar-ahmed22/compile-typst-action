@@ -24,7 +24,7 @@ jobs:
       #     name: PDF
       #     path: "**/*.pdf"
       - name: Release
-        uses: softprops/actions-gh-release@v1
+        uses: softprops/action-gh-release@v1
         with:
           name: "${{ github.ref_name }}"
           file: |
