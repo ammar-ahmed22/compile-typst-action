@@ -43,7 +43,7 @@ const parseInputs = (): [string[], string[], string | undefined] => {
   }
 
   srcPaths = srcPaths.map(p => path.join(PATH, p));
-  outPaths = srcPaths.map(p => path.join(PATH, p));
+  outPaths = outPaths.map(p => path.join(PATH, p));
 
   let fp;
   if (fontsPath !== "") {
