@@ -94,4 +94,4 @@ Contributions to the Typst Compiler GitHub Action are welcome! It is far from pe
 
 For more information on Typst, visit [Typst Documentation](https://typst.app/docs/).
 
-Amamr Ahmed (ammar-ahmed22) 2024
+Ammar Ahmed (ammar-ahmed22) 2024
