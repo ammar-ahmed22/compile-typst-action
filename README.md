@@ -89,6 +89,10 @@ jobs:
           path/to/output/file2.pdf
 ```
 
+I have created an example project where this action is used to compile and commit the generated/updated PDFs to the repo:
+
+[compile-typst-example](https://github.com/ammar-ahmed22/compile-typst-example)
+
 ## 🙌 Contributing
 Contributions to the Typst Compiler GitHub Action are welcome! It is far from perfect, I threw  this together quickly to solve a personal problem. Please feel free to open a PR or issue with any changes!
 
