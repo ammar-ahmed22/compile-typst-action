@@ -9,6 +9,8 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
+WORKDIR /root/
+
 # Copying necessary files
 COPY package*.json /root/
 COPY tsconfig.json /root/
