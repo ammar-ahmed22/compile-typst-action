@@ -22,4 +22,4 @@ RUN npm install
 
 RUN npm run build
 
-ENTRYPOINT [ "node", "/root/dist/index.js" ]
+ENTRYPOINT [ "node", "/usr/app/dist/index.js" ]
