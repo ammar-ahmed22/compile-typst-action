@@ -24,7 +24,7 @@ const parseInputs = (): [string[], string[], string | undefined] => {
   // Check if source paths exist in the repo
   for (const p of srcPaths) {
     if (!fs.existsSync(path.join(PATH, p))) {
-      setFailed(`Provided source path: '${p}' does not exist in the repository!`)
+      setFailed(`Provided source path: '${p}' (${path.join(PATH, p)}) does not exist in the repository!`)
     }
   }
 
