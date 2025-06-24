@@ -1,5 +1,5 @@
 
-FROM node:18-alpine as node
+FROM node:23-alpine as node
 # Typst Docker Image
 FROM ghcr.io/typst/typst:latest
 
