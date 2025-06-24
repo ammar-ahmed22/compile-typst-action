@@ -3,7 +3,7 @@ import path from "path";
 import * as core from "@actions/core"
 import { execSync } from "child_process";
 
-const PATH = path.join(__dirname, "../../github/workspace");
+const PATH = "/github/workspace";
 
 const setFailed = (message: string | Error) => {
   core.setFailed(message);
