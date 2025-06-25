@@ -67,9 +67,14 @@ const parseInputs = (): [string[], string[], string | undefined] => {
       const out = outputs[i];
       let cmd = "typst compile ";
       if (fontsPath) {
-        cmd += `--font-path ${fontsPath} `
+        const fontsPathStr = `--font-path=${fontsPath} `;
+        // Debug information about available fonts.
+        const fontCmd = `typst fonts ${fontsPathStr}`;
+        console.log("Listing available fonts\n", fontCmd, "\n", execSync(fontCmd).toString());
+        cmd += fontsPathStr;
       }
       cmd += `${src} ${out}`
+      console.log(`Running command: ${cmd}`);
       const res = execSync(cmd);
       console.log(res.toString());
     }
