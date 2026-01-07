@@ -1,5 +1,5 @@
 
-FROM node:18-alpine as node
+FROM node:23-alpine as node
 # Typst Docker Image
 FROM ghcr.io/typst/typst:latest
 
@@ -9,12 +9,12 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-WORKDIR /root/
+WORKDIR /usr/app/
 
 # Copying necessary files
-COPY package*.json /root/
-COPY tsconfig.json /root/
-COPY src /root/src 
+COPY package*.json /usr/app/
+COPY tsconfig.json /usr/app/
+COPY src /usr/app/src
 
 # Compiling typescript
 RUN npm install -g typescript
@@ -22,4 +22,4 @@ RUN npm install
 
 RUN npm run build
 
-ENTRYPOINT [ "node", "/root/dist/index.js" ]
+ENTRYPOINT [ "node", "/usr/app/dist/index.js" ]
