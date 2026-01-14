@@ -41,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Compile Typst Files
-      uses: ammar-ahmed22/compile-typst-action@v1
+      uses: ammar-ahmed22/compile-typst-action@v2
       with:
         source_paths: 'path/to/source/file1.typ path/to/source/file2.typ'
         output_paths: 'path/to/output/file1.pdf path/to/output/file2.pdf'
@@ -69,7 +69,7 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
     - name: Compile Typst Files
-      uses: ammar-ahmed22/compile-typst-action@v1
+      uses: ammar-ahmed22/compile-typst-action@v2
       with:
         source_paths: 'path/to/source/file1.typ path/to/source/file2.typ'
         output_paths: 'path/to/output/file1.pdf path/to/output/file2.pdf'
